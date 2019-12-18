@@ -2,6 +2,7 @@ import typescript from 'rollup-plugin-typescript2'
 import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
 // import postcss from 'rollup-plugin-postcss-modules'
+import collectSass from 'rollup-plugin-collect-sass'
 import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
@@ -27,8 +28,12 @@ export default {
   ],
   plugins: [
     external(),
-    postcss({
-      modules: true
+    // postcss({
+    //   extract: false,
+    //   modules: false
+    // }),
+    collectSass({
+      extract: process.env.NODE_ENV === "dev" ? false : pkg.css
     }),
     url(),
     svgr(),

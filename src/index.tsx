@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "./styles.css";
+import "./assets/sass/react-user-list.scss";
 // ? TYPES:
 import { User } from "./types/user.type";
 
