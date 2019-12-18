@@ -1,5 +1,15 @@
 .react-user-list {
   &__wrapper {
-    background: red;
+    // background: red;
+    display: inline-block;
+    width: 100%;
+    li {
+      display: inline-block;
+    }
+  }
+  &__avatar {
+    border-radius: 50%;
+    border: 2px solid black;
+    text-align: center;
   }
 }
