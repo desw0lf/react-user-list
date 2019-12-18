@@ -1,0 +1,11 @@
+src/registerServiceWorker.js
+src/**/__tests__/**
+build/*
+old/*
+legacy/index_backup.js
+legacy/dist/*
+html_static/*
+cdn/*
+.vscode/*
+*.md
+src/serviceWorker.js
