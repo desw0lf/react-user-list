@@ -1,15 +1,30 @@
 .react-user-list {
   &__wrapper {
     // background: red;
+    font-family: Helvetica, Arial, Georgia, sans-serif;
     display: inline-block;
     width: 100%;
+    position: relative;
     li {
       display: inline-block;
+      + .react-user-list__user {
+        margin-left: -12px;
+      }
     }
   }
   &__avatar {
+    user-select: none;
+    cursor: pointer;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 2px solid white;
     text-align: center;
+    // position: relative;
+    // z-index: 1;
+    // li:hover & {
+    //   z-index: 2;
+    // }
+  }
+  &__extra {
+    color: gray;
   }
 }
