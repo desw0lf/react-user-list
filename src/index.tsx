@@ -1,17 +1,23 @@
-/**
- * @class ExampleComponent
- */
-
 import * as React from "react";
 
-import styles from "./styles.css";
+import "./styles.css";
+// ? TYPES:
+import { User } from "./types/user.type";
 
-export type Props = { text: string };
+export type Props = {
+  users: User[];
+};
 
-export default class ExampleComponent extends React.Component<Props> {
-  render() {
-    const { text } = this.props;
+const UserList: React.ReactNode = ({ users }: Props) => {
+  return (
+    <div className="react-user-list__wrapper">
+      <ul>
+        {users.map((user: User, i: number) => (
+          <li key={i}>{user.firstName}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-    return <div className={styles.test}>Example Component: {text}</div>;
-  }
-}
+export default UserList;
