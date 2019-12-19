@@ -13,22 +13,34 @@ export type Props = {
   usersLength?: number;
   maxItems: number;
   theme: "default" | string;
+  borderWidth?: number;
+  borderColor?: string;
   [otherProps: string]: any;
 };
 
 export type UserItemProps = {
   user: User;
-  size: number;
+  size?: number;
+  borderWidth?: number;
+  borderColor?: string;
   tag: "div" | "li"; // TODO: general type for html elements
 };
 
 const DEFAULTS = {
   size: parseInt(VARIABLES.avatarSize, 10),
+  borderWidth: parseInt(VARIABLES.borderWidth, 10),
+  borderColor: VARIABLES.borderColor,
   maxItems: 3,
   theme: "default"
 };
 
-const UserItem: React.ElementType = ({ user, size, tag = "div" }: UserItemProps) => {
+const UserItem: React.ElementType = ({
+  user,
+  size = DEFAULTS.size,
+  borderWidth,
+  borderColor,
+  tag = "div"
+}: UserItemProps) => {
   const [image, setImage] = useState(user.image);
   const onImageError = () => {
     setImage(null);
@@ -36,6 +48,8 @@ const UserItem: React.ElementType = ({ user, size, tag = "div" }: UserItemProps)
   const WrapperTag = tag;
   const baseStyles = {
     ...(size !== DEFAULTS.size && { width: `${size}px`, height: `${size}px` }),
+    ...(borderWidth !== DEFAULTS.borderWidth && { borderWidth }),
+    ...(borderColor !== DEFAULTS.borderColor && { borderColor }),
     fontSize: `${size / 3}px`
   };
   const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
@@ -53,8 +67,10 @@ const UserList: React.ReactNode = ({
   users,
   usersLength,
   theme = DEFAULTS.theme,
-  size = DEFAULTS.size,
+  size,
   maxItems = DEFAULTS.maxItems,
+  borderWidth,
+  borderColor,
   ...props
 }: Props) => {
   const extraUsers = usersLength || users.length - maxItems;
@@ -65,7 +81,7 @@ const UserList: React.ReactNode = ({
           .slice(0, maxItems)
           .reverse()
           .map((user: User, i: number) => (
-            <UserItem key={i} user={user} size={size} tag="li" />
+            <UserItem key={i} user={user} size={size} borderWidth={borderWidth} borderColor={borderColor} tag="li" />
           ))}
       </ul>
       {extraUsers > 0 && (

@@ -7,7 +7,7 @@ export default class App extends Component {
     return (
       <div style={{width: "80%", margin: "72px auto"}}>
         <UserList users={USERS} />
-        <div><UserItem user={USERS[0]} size={40}/></div>
+        <div><UserItem user={USERS[1]} size={40} borderWidth={5} borderColor="rgba(0,0,0,0.5)" /></div>
       </div>
     )
   }
