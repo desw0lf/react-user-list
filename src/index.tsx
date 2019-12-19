@@ -16,6 +16,7 @@ export type Props = {
 export type UserItemProps = {
   user: User;
   size: number;
+  tag: "div" | "li"; // TODO: general type for html elements
 };
 
 const DEFAULTS = {
@@ -24,20 +25,21 @@ const DEFAULTS = {
   theme: "default"
 };
 
-const UserItem: React.ElementType = ({ user, size }: UserItemProps) => {
+const UserItem: React.ElementType = ({ user, size, tag = "div" }: UserItemProps) => {
   const [image, setImage] = useState(user.image);
   const onImageError = () => {
     setImage(null);
   };
+  const WrapperTag = tag;
   const baseStyles = { width: `${size}px`, height: `${size}px`, fontSize: `${size / 3}px` };
   const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
   const colour = { background: image ? "transparent" : stringToColour(user.username) };
   return (
-    <li className="react-user-list__user">
+    <WrapperTag className="react-user-list__user">
       <div className="react-user-list__avatar" style={{ ...baseStyles, ...colour }}>
         {!image ? initials : <img onError={onImageError} src={image} alt={initials} />}
       </div>
-    </li>
+    </WrapperTag>
   );
 };
 
@@ -57,12 +59,12 @@ const UserList: React.ReactNode = ({
           .slice(0, maxItems)
           .reverse()
           .map((user: User, i: number) => (
-            <UserItem key={i} user={user} size={size} />
+            <UserItem key={i} user={user} size={size} tag="li" />
           ))}
       </ul>
       {extraUsers > 0 && (
         <div className="react-user-list__extra" style={{ fontSize: `${size / 3}px` }}>
-          <span>+{extraUsers}</span>
+          <div>+{extraUsers}</div>
         </div>
       )}
     </div>
