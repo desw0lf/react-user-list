@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { stringToColour } from "./helpers/colour";
 import "./assets/sass/react-user-list.scss";
 // ? TYPES:
@@ -25,13 +25,17 @@ const DEFAULTS = {
 };
 
 const UserItem: React.ElementType = ({ user, size }: UserItemProps) => {
+  const [image, setImage] = useState(user.image);
+  const onImageError = () => {
+    setImage(null);
+  };
   const baseStyles = { width: `${size}px`, height: `${size}px`, fontSize: `${size / 3}px` };
   const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
-  const colour = { background: user.image ? "transparent" : stringToColour(user.username) };
+  const colour = { background: image ? "transparent" : stringToColour(user.username) };
   return (
     <li className="react-user-list__user">
       <div className="react-user-list__avatar" style={{ ...baseStyles, ...colour }}>
-        {!user.image ? initials : <img src={user.image} alt={initials} />}
+        {!image ? initials : <img onError={onImageError} src={image} alt={initials} />}
       </div>
     </li>
   );
