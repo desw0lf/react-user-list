@@ -3,7 +3,7 @@ export const USERS = [
     firstName: "John",
     lastName: "Smith",
     username: "asddas@dasasd.com",
-    image: "https://i.imgur.com/1sZ4giz.png"
+    image: "https://x"
   },
   {
     firstName: "Bob",
@@ -15,7 +15,7 @@ export const USERS = [
     firstName: "Janna",
     lastName: "Doe",
     username: "asdazxfdfsdc@asdasd.com",
-    image: null
+    image: "https://i.imgur.com/1sZ4giz.png"
   },
   {
     firstName: "Bob",
