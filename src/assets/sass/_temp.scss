@@ -1,23 +1,48 @@
+$spacing: 12px;
+
 .react-user-list {
   &__wrapper {
-    // background: red;
-    font-family: Helvetica, Arial, Georgia, sans-serif;
     display: inline-block;
-    width: 100%;
-    position: relative;
-    li {
-      display: inline-block;
-      + .react-user-list__user {
-        margin-left: -12px;
+    ul {
+      // background: red;
+      // padding-left: $spacing;
+      font-family: Helvetica, Arial, Georgia, sans-serif;
+      // display: inline-block;
+      display: inline-flex;
+      // width: 100%;
+      position: relative;
+      flex-direction: row-reverse;
+      // &:hover {
+      //   margin-left: -24px;
+      // }
+      // direction: rtl;
+      li {
+        margin-left: -($spacing);
+        display: inline-block;
+        // + .react-user-list__user {
+        //   margin-right: $spacing;
+        // }
       }
     }
   }
+  &__avatar,
+  &__extra > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &__avatar {
     user-select: none;
+    overflow: hidden;
     cursor: pointer;
     border-radius: 50%;
     border: 2px solid white;
-    text-align: center;
+    color: white;
+    img {
+      height: auto;
+      width: 100%;
+      // overflow: hidden;
+    }
     // position: relative;
     // z-index: 1;
     // li:hover & {
@@ -25,6 +50,13 @@
     // }
   }
   &__extra {
-    color: gray;
+    // background: gray;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-left: 4px;
+    color: black;
+    filter: invert(100%);
+    display: inline-block;
   }
 }
