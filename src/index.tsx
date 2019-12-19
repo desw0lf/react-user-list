@@ -10,6 +10,7 @@ import { User } from "./types/user.type";
 export type Props = {
   users: User[];
   size: number;
+  borderRadius?: "rounded" | number;
   usersLength?: number;
   maxItems: number;
   theme: "default" | string;
@@ -21,6 +22,7 @@ export type Props = {
 export type UserItemProps = {
   user: User;
   size?: number;
+  borderRadius?: "rounded" | number;
   borderWidth?: number;
   borderColor?: string;
   tag: "div" | "li"; // TODO: general type for html elements
@@ -30,6 +32,7 @@ const DEFAULTS = {
   size: parseInt(VARIABLES.avatarSize, 10),
   borderWidth: parseInt(VARIABLES.borderWidth, 10),
   borderColor: VARIABLES.borderColor,
+  borderRadius: VARIABLES.borderRadius === "50%" ? "rounded" : parseInt(VARIABLES.borderRadius),
   maxItems: 3,
   theme: "default"
 };
@@ -38,6 +41,7 @@ const UserItem: React.ElementType = ({
   user,
   size = DEFAULTS.size,
   borderWidth,
+  borderRadius,
   borderColor,
   tag = "div"
 }: UserItemProps) => {
@@ -50,6 +54,7 @@ const UserItem: React.ElementType = ({
     ...(size !== DEFAULTS.size && { width: `${size}px`, height: `${size}px` }),
     ...(borderWidth !== DEFAULTS.borderWidth && { borderWidth }),
     ...(borderColor !== DEFAULTS.borderColor && { borderColor }),
+    ...(borderRadius !== DEFAULTS.borderRadius && { borderRadius }),
     fontSize: `${size / 3}px`
   };
   const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
@@ -68,6 +73,7 @@ const UserList: React.ReactNode = ({
   usersLength,
   theme = DEFAULTS.theme,
   size,
+  borderRadius,
   maxItems = DEFAULTS.maxItems,
   borderWidth,
   borderColor,
@@ -81,7 +87,15 @@ const UserList: React.ReactNode = ({
           .slice(0, maxItems)
           .reverse()
           .map((user: User, i: number) => (
-            <UserItem key={i} user={user} size={size} borderWidth={borderWidth} borderColor={borderColor} tag="li" />
+            <UserItem
+              key={i}
+              user={user}
+              size={size}
+              borderWidth={borderWidth}
+              borderColor={borderColor}
+              borderRadius={borderRadius}
+              tag="li"
+            />
           ))}
       </ul>
       {extraUsers > 0 && (
