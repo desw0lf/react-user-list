@@ -7,7 +7,9 @@ import { User } from "./types/user.type";
 export type Props = {
   users: User[];
   size: number;
+  usersLength?: number;
   maxItems: number;
+  theme: "default" | string;
   [otherProps: string]: any;
 };
 
@@ -16,28 +18,52 @@ export type UserItemProps = {
   size: number;
 };
 
+const DEFAULTS = {
+  size: 40,
+  maxItems: 3,
+  theme: "default"
+};
+
 const UserItem: React.ElementType = ({ user, size }: UserItemProps) => {
-  const baseStyles = { width: `${size}px`, height: `${size}px`, lineHeight: `${size}px`, fontSize: `${size / 2.5}px` };
-  const colour = stringToColour(user.username);
+  const baseStyles = { width: `${size}px`, height: `${size}px`, fontSize: `${size / 3}px` };
+  const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
+  const colour = { background: user.image ? "transparent" : stringToColour(user.username) };
   return (
     <li className="react-user-list__user">
       <div className="react-user-list__avatar" style={{ ...baseStyles, ...colour }}>
-        {user.firstName.charAt(0) + user.lastName.charAt(0)}
+        {!user.image ? initials : <img src={user.image} alt={initials} />}
       </div>
     </li>
   );
 };
 
-const UserList: React.ReactNode = ({ users, size = 40, maxItems = 3, ...props }: Props) => {
-  const extraUsers = users.length - maxItems;
+const UserList: React.ReactNode = ({
+  users,
+  usersLength,
+  theme = DEFAULTS.theme,
+  size = DEFAULTS.size,
+  maxItems = DEFAULTS.maxItems,
+  ...props
+}: Props) => {
+  const extraUsers = usersLength || users.length - maxItems;
   return (
-    <ul className="react-user-list__wrapper" {...props}>
-      {users.slice(0, maxItems).map((user: User, i: number) => (
-        <UserItem key={i} user={user} size={size} />
-      ))}
-      {extraUsers > 0 && <li className="react-user-list__extra">+{extraUsers} more</li>}
-    </ul>
+    <div className={`react-user-list__wrapper react-user-list__${theme}`} {...props}>
+      <ul>
+        {users
+          .slice(0, maxItems)
+          .reverse()
+          .map((user: User, i: number) => (
+            <UserItem key={i} user={user} size={size} />
+          ))}
+      </ul>
+      {extraUsers > 0 && (
+        <div className="react-user-list__extra" style={{ fontSize: `${size / 3}px` }}>
+          <span>+{extraUsers}</span>
+        </div>
+      )}
+    </div>
   );
 };
 
+export { stringToColour, UserItem };
 export default UserList;

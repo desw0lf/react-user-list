@@ -24,9 +24,5 @@ const intToARGB = (i: number): string => {
 };
 
 export const stringToColour = (value: string): any => {
-  const colour = "#" + intToARGB(hashCode(value));
-  // prettier-ignore
-  // tslint:disable-next-line:object-literal-key-quotes
-  return { 'background': colour };
-  // 'color': colour, 'border-color': colour,
+  return "#" + intToARGB(hashCode(value));
 };
