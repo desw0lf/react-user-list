@@ -1,9 +1,10 @@
 import typescript from 'rollup-plugin-typescript2'
 import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
-// import postcss from 'rollup-plugin-postcss-modules'
 import collectSass from 'rollup-plugin-collect-sass'
-import postcss from 'rollup-plugin-postcss'
+// import postcss from 'rollup-plugin-postcss'
+import scssVariable from 'rollup-plugin-sass-variables'
+
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
@@ -32,8 +33,11 @@ export default {
     //   extract: false,
     //   modules: false
     // }),
+    scssVariable(),
     collectSass({
-      extract: process.env.NODE_ENV === "dev" ? false : pkg.css
+      extract: process.env.NODE_ENV === "dev" ? false : pkg.css,
+      include: ['**/*.s?ss'],
+      exclude: ["src/variables.scss", "src/assets/sass/utilities/_exported-variables.scss"]
     }),
     url(),
     svgr(),
