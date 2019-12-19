@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { stringToColour } from "./helpers/colour";
 import "./assets/sass/react-user-list.scss";
+import VARIABLES from "!!sass-variable-loader!./assets/sass/utilities/_exported-variables.scss";
+// import variables from "!!sass-variable-loader!./variables.scss";
+
 // ? TYPES:
 import { User } from "./types/user.type";
 
@@ -20,7 +23,7 @@ export type UserItemProps = {
 };
 
 const DEFAULTS = {
-  size: 40,
+  size: parseInt(VARIABLES.avatarSize, 10),
   maxItems: 3,
   theme: "default"
 };
@@ -31,9 +34,12 @@ const UserItem: React.ElementType = ({ user, size, tag = "div" }: UserItemProps)
     setImage(null);
   };
   const WrapperTag = tag;
-  const baseStyles = { width: `${size}px`, height: `${size}px`, fontSize: `${size / 3}px` };
+  const baseStyles = {
+    ...(size !== DEFAULTS.size && { width: `${size}px`, height: `${size}px` }),
+    fontSize: `${size / 3}px`
+  };
   const initials = user.firstName.charAt(0) + user.lastName.charAt(0);
-  const colour = { background: image ? "transparent" : stringToColour(user.username) };
+  const colour = { background: image ? "rgba(0,0,0,0.5)" : stringToColour(user.username) };
   return (
     <WrapperTag className="react-user-list__user">
       <div className="react-user-list__avatar" style={{ ...baseStyles, ...colour }}>
