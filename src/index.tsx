@@ -81,11 +81,11 @@ const UserList: React.ReactNode = ({
   borderWidth,
   borderColor,
   children,
-  minWidth = "200px",
+  minWidth = "240px",
   maxHeight = "200px",
   ...props
 }: Props) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
   const extraUsers = usersLength || users.length - maxItems;
   return (
     <div
@@ -115,14 +115,14 @@ const UserList: React.ReactNode = ({
         </div>
       )}
       {children && (
-        <div className="react-user-list__expanded" style={{ paddingTop: `${size}px` }}>
+        <div className="react-user-list__expanded">
           <div className="react-user-list__expanded-wrapper" style={{ minWidth: minWidth }}>
-            <div className="react-user-list__arrow-down">
+            {/* <div className="react-user-list__arrow-down">
               <div />
-            </div>
+            </div> */}
             <div
               className="react-user-list__expanded-content react-user-list__scrollbar"
-              style={{ maxHeight: maxHeight }}>
+              style={{ maxHeight: maxHeight, marginTop: `${size}px` }}>
               {children}
             </div>
           </div>

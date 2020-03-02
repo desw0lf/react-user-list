@@ -24,6 +24,6 @@
 //   align-items: center;
 // }
 
-.react-user-list__arrow-down {
+.react-user-list__expanded-wrapper {
   @include arrow("top", "left", $arrow-size, white, red, 0);
 }

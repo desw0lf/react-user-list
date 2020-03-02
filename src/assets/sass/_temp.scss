@@ -1,3 +1,11 @@
+%list-dropdown {
+  display: none;
+  .is-visible & {
+    display: block;
+    animation: showNav 250ms ease-in-out both;
+  }
+}
+
 .react-user-list {
   &__wrapper {
     display: inline-flex;
@@ -73,15 +81,12 @@
     top: 0;
     left: 0;
     &-wrapper {
-      position: absolute;
+      position: relative;
       // display: none;
+      // background: red;
+      @extend %list-dropdown;
     }
     &-content {
-      display: none;
-      .is-visible & {
-        display: block;
-        animation: showNav 250ms ease-in-out both;
-      }
       // top: 0 !important;
       // display: block;
       transform: translateY(0px);
@@ -128,13 +133,13 @@
     //   animation: showNav 250ms ease-in-out both;
     // }
   }
-  &__arrow-down {
-    display: none;
-    .is-visible & {
-      display: block;
-      animation: showNav 250ms ease-in-out both;
-    }
-  }
+  // &__arrow-down {
+  //   display: none;
+  //   .is-visible & {
+  //     display: block;
+  //     animation: showNav 250ms ease-in-out both;
+  //   }
+  // }
 }
 
 @keyframes showNav {
