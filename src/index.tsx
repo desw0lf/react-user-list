@@ -7,10 +7,12 @@ import VARIABLES from "!!sass-variable-loader!./assets/sass/utilities/_exported-
 // ? TYPES:
 import { User } from "./types/user.type";
 
+type BorderRadius = "rounded" | number;
+
 export type Props = {
   users: User[];
   size: number;
-  borderRadius?: "rounded" | number;
+  borderRadius?: BorderRadius;
   children?: any; // TODO
   usersLength?: number;
   maxItems: number;
@@ -22,10 +24,10 @@ export type Props = {
   [otherProps: string]: any;
 };
 
-export type UserItemProps = {
+export type UserAvatarProps = {
   user: User;
   size?: number;
-  borderRadius?: "rounded" | number;
+  borderRadius?: BorderRadius;
   borderWidth?: number;
   borderColor?: string;
   tag: "div" | "li"; // TODO: general type for html elements
@@ -40,14 +42,14 @@ const DEFAULTS = {
   theme: "default"
 };
 
-const UserItem: React.ElementType = ({
+const UserAvatar: React.ElementType = ({
   user,
   size = DEFAULTS.size,
   borderWidth,
   borderRadius,
   borderColor,
   tag = "div"
-}: UserItemProps) => {
+}: UserAvatarProps) => {
   const [image, setImage] = useState(user.image);
   const onImageError = () => {
     setImage(null);
@@ -87,6 +89,7 @@ const UserList: React.ReactNode = ({
 }: Props) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const extraUsers = usersLength || users.length - maxItems;
+  const UserListItem = children;
   return (
     <div
       onMouseEnter={() => setExpanded(true)}
@@ -98,7 +101,7 @@ const UserList: React.ReactNode = ({
           .slice(0, maxItems)
           .reverse()
           .map((user: User, i: number) => (
-            <UserItem
+            <UserAvatar
               key={i}
               user={user}
               size={size}
@@ -114,7 +117,7 @@ const UserList: React.ReactNode = ({
           <div>+{extraUsers}</div>
         </div>
       )}
-      {children && (
+      {children && expanded && (
         <div className="react-user-list__expanded">
           <div className="react-user-list__expanded-wrapper" style={{ minWidth: minWidth }}>
             {/* <div className="react-user-list__arrow-down">
@@ -123,6 +126,9 @@ const UserList: React.ReactNode = ({
             <div
               className="react-user-list__expanded-content react-user-list__scrollbar"
               style={{ maxHeight: maxHeight, marginTop: `${size}px` }}>
+              {users.map((user: User, i: number) => (
+                <UserListItem key={user.username} index={i} user={user} />
+              ))}
               {children}
             </div>
           </div>
@@ -132,5 +138,5 @@ const UserList: React.ReactNode = ({
   );
 };
 
-export { stringToColour, UserItem };
+export { stringToColour, UserAvatar };
 export default UserList;
