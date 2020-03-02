@@ -9,7 +9,7 @@ export default class App extends Component {
         <section className="section">
           <UserList users={USERS}>
           {({ index, user }) => {
-            return <div onClick={() => alert("test")}><UserAvatar user={user}/><span>{user.firstName + " " + user.lastName}</span></div>
+            return <div onClick={() => alert(user.username)}><UserAvatar user={user}/><span>{user.firstName + " " + user.lastName}</span></div>
           }}
           </UserList>
         </section>
