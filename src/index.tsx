@@ -11,11 +11,14 @@ export type Props = {
   users: User[];
   size: number;
   borderRadius?: "rounded" | number;
+  children?: any; // TODO
   usersLength?: number;
   maxItems: number;
   theme: "default" | string;
   borderWidth?: number;
   borderColor?: string;
+  minWidth?: string;
+  maxWidth?: string;
   [otherProps: string]: any;
 };
 
@@ -72,16 +75,24 @@ const UserList: React.ReactNode = ({
   users,
   usersLength,
   theme = DEFAULTS.theme,
-  size,
+  size = DEFAULTS.size,
   borderRadius,
   maxItems = DEFAULTS.maxItems,
   borderWidth,
   borderColor,
+  children,
+  minWidth = "200px",
+  maxHeight = "200px",
   ...props
 }: Props) => {
+  const [expanded, setExpanded] = useState(false);
   const extraUsers = usersLength || users.length - maxItems;
   return (
-    <div className={`react-user-list__wrapper react-user-list__${theme}`} {...props}>
+    <div
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+      className={`react-user-list__wrapper react-user-list__${theme} ${expanded ? "is-visible" : ""}`}
+      {...props}>
       <ul>
         {users
           .slice(0, maxItems)
@@ -101,6 +112,20 @@ const UserList: React.ReactNode = ({
       {extraUsers > 0 && (
         <div className="react-user-list__extra" style={{ fontSize: `${size / 3}px` }}>
           <div>+{extraUsers}</div>
+        </div>
+      )}
+      {children && (
+        <div className="react-user-list__expanded" style={{ paddingTop: `${size}px` }}>
+          <div className="react-user-list__expanded-wrapper" style={{ minWidth: minWidth }}>
+            <div className="react-user-list__arrow-down">
+              <div />
+            </div>
+            <div
+              className="react-user-list__expanded-content react-user-list__scrollbar"
+              style={{ maxHeight: maxHeight }}>
+              {children}
+            </div>
+          </div>
         </div>
       )}
     </div>

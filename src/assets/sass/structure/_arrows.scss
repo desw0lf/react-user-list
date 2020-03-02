@@ -1,0 +1,29 @@
+// [class^="react-user-list__arrow-"] {
+//   font-size: 0;
+//   background: transparent;
+//   height: $arrow-size;
+//   position: absolute;
+//   text-align: center;
+//   > div {
+//     display: inline-block;
+//     position: absolute;
+//     border-style: solid;
+//     // margin-top: -($arrow-size);
+//     top: -($arrow-size);
+//     // background: white;
+//   }
+// }
+// .react-user-list__arrow-down > div {
+//   width: 0;
+//   height: 0;
+//   border-left: $arrow-size solid transparent;
+//   border-right: $arrow-size solid transparent;
+//   border-top-color: transparent;
+//   border-bottom: $arrow-size solid red;
+//   bottom: 0;
+//   align-items: center;
+// }
+
+.react-user-list__arrow-down {
+  @include arrow("top", "left", $arrow-size, white, red, 0);
+}

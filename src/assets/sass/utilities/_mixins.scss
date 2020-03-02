@@ -1,3 +1,5 @@
+@import "_ultimate_arrow_mixin.scss";
+
 @function toPx($num) {
   @return $num * 1px;
 }
