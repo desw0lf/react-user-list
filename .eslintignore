@@ -10,3 +10,4 @@ cdn/*
 *.md
 src/serviceWorker.js
 rollup.config.js
+example
