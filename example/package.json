@@ -1,20 +1,38 @@
 {
-  "name": "react-user-list-example",
-  "homepage": "https://.github.io/react-user-list",
+  "name": "react-user-list-docs",
   "version": "0.0.0",
+  "homepage": "https://.github.io/react-user-list",
+  "author": "Artur",
   "license": "MIT",
   "private": true,
-  "dependencies": {
-    "prop-types": "^15.6.2",
-    "react": "file:../node_modules/react",
-    "react-dom": "file:../node_modules/react-dom",
-    "react-scripts": "^1.1.4",
-    "react-user-list": "file:.."
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/cli.git"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^2.0.0-alpha.43",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.43",
+    "classnames": "^2.2.6",
+    "react": "file:../node_modules/react",
+    "react-dom": "file:../node_modules/react-dom",
+    "react-user-list": "file:.."
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
