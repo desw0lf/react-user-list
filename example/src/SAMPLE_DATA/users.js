@@ -14,19 +14,19 @@ export const USERS = [
   {
     firstName: "Janna",
     lastName: "Doe",
-    username: "asdazxfdfsdc@asdasd.com",
+    username: "asdazxfdfsdc@asddasd.com",
     image: "https://i.imgur.com/1sZ4giz.png"
   },
   {
     firstName: "Bob",
     lastName: "Doe",
-    username: "asdazxsdffdc@asdasd.com",
+    username: "asdazxsdffdc@asddasd.com",
     image: null
   },
   {
     firstName: "Bob",
     lastName: "Doe",
-    username: "asdazxsdffdc@asdasd.com",
+    username: "asdazxsdffddc@asdasd.com",
     image: null
   }
 ];

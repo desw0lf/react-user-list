@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { USERS } from "../SAMPLE_DATA/users";;
+import { USERS } from "../SAMPLE_DATA/users";
 import UserList, { UserAvatar } from 'react-user-list';
 
 function Examples() {

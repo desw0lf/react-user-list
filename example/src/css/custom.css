@@ -6,8 +6,8 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #9768a2;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
+  --ifm-color-primary: #c886d8;
+  --ifm-color-primary-dark: #6e3f79;
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
   --ifm-color-primary-light: rgb(70, 203, 174);
@@ -27,4 +27,65 @@ html[data-theme="dark"] {
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.hero.hero--primary-dark {
+  --ifm-hero-background-color: var(--ifm-color-primary-dark);
+  --ifm-hero-text-color: var(--ifm-font-base-color-inverse);
+
+  background-color: var(--ifm-hero-background-color);
+  color: var(--ifm-hero-text-color);
+}
+
+.tryme {
+  display: table;
+  width: 100%;
+}
+
+.tryme > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.tryme > div:first-child {
+  padding-right: 12px;
+  width: 1px;
+}
+.tryme > div > div + div {
+  margin-top: 8px;
+}
+
+.tryme input {
+  max-width: 256px;
+}
+
+.doco-input {
+  font-family: sans-serif;
+  border-radius: 2px;
+  vertical-align: top;
+  height: 32px;
+  width: 100%;
+  box-shadow: none;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+  color: white;
+}
+
+.doco-input::placeholder {
+  color: white;
+  opacity: 0.4;
+}
+
+.doco-input:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.doco-input:active,
+.doco-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.1);
 }

@@ -4,7 +4,7 @@ const title = "React User List";
 
 module.exports = {
   title: title,
-  tagline: "The tagline of my site",
+  tagline: "Expandable user avatar list library component for React",
   url: package.homepage,
   baseUrl: "/",
   favicon: "img/favicon.ico",
