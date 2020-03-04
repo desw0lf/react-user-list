@@ -83,17 +83,24 @@ const UserList: React.ReactNode = ({
   borderWidth,
   borderColor,
   children,
+  toggleListOnHover = true,
   minWidth = "240px",
   maxHeight = "200px",
+  isExpanded = false,
   ...props
 }: Props) => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(isExpanded);
   const extraUsers = usersLength || users.length - maxItems;
   const UserListItem = children;
+  const hoverProps = toggleListOnHover
+    ? {
+        onMouseEnter: () => setExpanded(true),
+        onMouseLeave: () => setExpanded(false)
+      }
+    : {};
   return (
     <div
-      onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)}
+      {...hoverProps}
       className={`react-user-list__wrapper react-user-list__${theme} ${expanded ? "is-visible" : ""}`}
       {...props}>
       <ul>
@@ -129,7 +136,6 @@ const UserList: React.ReactNode = ({
               {users.map((user: User, i: number) => (
                 <UserListItem key={user.username} index={i} user={user} />
               ))}
-              {children}
             </div>
           </div>
         </div>

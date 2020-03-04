@@ -43,7 +43,7 @@
     height: toPx($avatar-size);
     user-select: none;
     overflow: hidden;
-    cursor: pointer;
+    // cursor: pointer;
     border-style: solid;
     border-radius: $border-radius;
     border-width: toPx($border-width);
@@ -96,6 +96,7 @@
       // left: 0;
       background: white;
       border-radius: 3px;
+      color: #333;
       // padding-right: $scrollbar-width;
       padding: 8px;
       width: auto;
