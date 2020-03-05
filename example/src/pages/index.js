@@ -29,11 +29,11 @@ const features = [
     )
   },
   {
-    title: "Powered by React",
-    imageUrl: "img/undraw_docusaurus_react.svg",
+    title: "Own dropdown elements",
+    imageUrl: "img/feature_own_dropdown_elements.svg",
     description: (
       <>
-        desc3
+        Built in dropdown element for concatenated user avatar list, with the ability to include customizable dropdown elements.
       </>
     )
   }
@@ -108,9 +108,9 @@ function Home() {
           </div>
         </div>
         <div className="container" style={{width:"40%",textAlign:"left"}}>
-          <UserList maxHeight={360} minWidth={300} size={100} users={USERS} isExpanded={true} toggleListOnHover={false}>
+          <UserList maxHeight={260} minWidth={300} size={80} users={USERS} isExpanded={true}>
             {({ index, user }) => {
-              return <div style={{background: selectedUser === user && "rgba(103, 66, 118, 0.3)"}} onClick={() => setSelectedUser(user)}><UserAvatar size={60} user={user}/><span>{user.firstName + " " + user.lastName}</span></div>
+              return <div style={{background: selectedUser === user && "rgba(103, 66, 118, 0.3)"}} onClick={() => setSelectedUser(user)}><UserAvatar size={50} user={user}/><span>{user.firstName + " " + user.lastName}</span></div>
             }}
           </UserList>
         </div>
