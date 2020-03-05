@@ -33,8 +33,9 @@ html[data-theme="dark"] {
   --ifm-hero-background-color: var(--ifm-color-primary-dark);
   --ifm-hero-text-color: var(--ifm-font-base-color-inverse);
 
-  background-color: var(--ifm-hero-background-color);
+  background: var(--ifm-hero-background-color);
   color: var(--ifm-hero-text-color);
+  background-image: radial-gradient(circle at top, #c886d8 0%, #6e3f79 70%);
 }
 
 .tryme {
