@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { stringToColour } from "./helpers/colour";
 import "./assets/sass/react-user-list.scss";
 import VARIABLES from "!!sass-variable-loader!./assets/sass/utilities/_exported-variables.scss";
@@ -13,7 +13,7 @@ export type Props = {
   users: User[];
   size: number;
   borderRadius?: BorderRadius;
-  children?: any; // TODO
+  children?: any; //React.ReactNode;
   usersLength?: number;
   maxItems: number;
   theme: "default" | string;
@@ -21,6 +21,7 @@ export type Props = {
   borderColor?: string;
   minWidth?: string;
   maxWidth?: string;
+  isExpanded?: boolean;
   [otherProps: string]: any;
 };
 
@@ -30,7 +31,7 @@ export type UserAvatarProps = {
   borderRadius?: BorderRadius;
   borderWidth?: number;
   borderColor?: string;
-  tag: "div" | "li"; // TODO: general type for html elements
+  tag: "div" | "li" | "span" | "button"; // TODO maybe: general type for html elements // keyof HTMLElementTagNameMap
 };
 
 const DEFAULTS = {
@@ -91,7 +92,7 @@ const UserList: React.ReactNode = ({
 }: Props) => {
   const [expanded, setExpanded] = useState<boolean>(isExpanded);
   const extraUsers = usersLength || users.length - maxItems;
-  const UserListItem = children;
+  // const UserListItem = children;
   const hoverProps = toggleListOnHover
     ? {
         onMouseEnter: () => setExpanded(true),
@@ -133,9 +134,18 @@ const UserList: React.ReactNode = ({
             <div
               className="react-user-list__expanded-content react-user-list__scrollbar"
               style={{ maxHeight: maxHeight, marginTop: `${size}px` }}>
-              {users.map((user: User, i: number) => (
-                <UserListItem key={user.username} index={i} user={user} />
-              ))}
+              {users.map((user: User, i: number) => {
+                return (
+                  <Fragment key={user.username}>
+                    {children({
+                      index: i,
+                      user: user
+                    })}
+                  </Fragment>
+                );
+              })}
+              {/* (  <UserListItem key={user.username} index={i} user={user} />
+               ))} */}
             </div>
           </div>
         </div>
