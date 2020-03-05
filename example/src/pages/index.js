@@ -10,8 +10,8 @@ import { USERS } from "../SAMPLE_DATA/users";
 
 const features = [
   {
-    title: <>No image avatar?</>,
-    imageUrl: "img/undraw_docusaurus_mountain.svg",
+    title: "No image avatar?",
+    imageUrl: "img/feature_no_image_avatar.svg",
     description: (
       <>
         Automatic coloured avatar generated using user's initials and username/email to generate a randomized background colour.
@@ -20,16 +20,16 @@ const features = [
     special: true
   },
   {
-    title: <>Fully customizable</>,
-    imageUrl: "img/undraw_docusaurus_tree.svg",
+    title: "Fully customizable",
+    imageUrl: "img/feature_fully_costomizable.svg",
     description: (
       <>
-        Fully customizable avatars, ability change size, border radius, border width, border colour or set a theme and add your own CSS. 
+        Fully customizable avatars, ability to change size, border radius, border width, border colour or set a theme and add your own CSS. 
       </>
     )
   },
   {
-    title: <>Powered by React</>,
+    title: "Powered by React",
     imageUrl: "img/undraw_docusaurus_react.svg",
     description: (
       <>
@@ -45,7 +45,7 @@ function Feature({ imageUrl, title, description, special }) {
     <div className={classnames("col col--4", styles.feature)}>
       {imgUrl && (
         <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+          <img className={styles.featureImage} src={imgUrl} alt={title} style={{width: "auto"}} />
         </div>
       )}
       <h3>{title}</h3>
