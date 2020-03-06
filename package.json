@@ -4,7 +4,7 @@
   "description": "",
   "author": "",
   "license": "MIT",
-  "repository": "/react-user-list",
+  "repository": "https://github.com/Zenk3/react-user-list",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "css": "dist/react-user-list.css",
