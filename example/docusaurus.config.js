@@ -6,7 +6,7 @@ module.exports = {
   title: title,
   tagline: "Expandable user avatar list library component for React",
   url: package.homepage,
-  baseUrl: "/",
+  baseUrl: "/react-user-list/",
   favicon: "img/favicon.ico",
   organizationName: package.author, // Usually your GitHub org/user name.
   projectName: package.name, // Usually your repo name.
@@ -84,7 +84,8 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: `${package.repository.url.split(".git")[0]}/edit/master/example/`
+          editUrl: `${package.repository.url}/tree/master/example/`
+          // editUrl: `${package.repository.url.split(".git")[0]}/edit/master/example/`
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css")
