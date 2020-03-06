@@ -24,9 +24,21 @@ export const USERS = [
     image: null
   },
   {
-    firstName: "Bob",
-    lastName: "Doe",
-    username: "asdazxsdffddc@asdasd.com",
+    firstName: "Kayly",
+    lastName: "Brooke",
+    username: "asdxazxsdffddc@asdasd.com",
+    image: null
+  },
+  {
+    firstName: "Kayly",
+    lastName: "Brooke",
+    username: "asdxazxsBrookedffddc@asdasd.com",
+    image: null
+  },
+  {
+    firstName: "Kelvin",
+    lastName: "Ridge",
+    username: "asdxazxsdfRidgefddc@asdasd.com",
     image: null
   }
 ];
