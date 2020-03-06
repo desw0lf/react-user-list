@@ -13,17 +13,27 @@ npm install --save react-user-list
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import React, { Component } from "react";
 
-import MyComponent from 'react-user-list'
+import UserList from "react-user-list";
 
-class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
+export default const Example = () => {
+  const users = [
+    {
+      firstName: "John",
+      lastName: "Smith",
+      username: "john.smith@sample.com",
+      image: null
+    },
+    {
+      firstName: "Sarah",
+      lastName: "Doe",
+      username: "sarah.doe@sample2.com",
+      image: "https://i.pravatar.cc/100"
+    }
+  ];
+  return <UserList users={users} />;
+};
 ```
 
 ## License
