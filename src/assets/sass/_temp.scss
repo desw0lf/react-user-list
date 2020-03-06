@@ -85,6 +85,9 @@
       // display: none;
       // background: red;
       @extend %list-dropdown;
+
+      box-shadow: 0 4px 20px 4px rgba(0, 20, 60, 0.1),
+        0 4px 80px -8px rgba(0, 20, 60, 0.2);
     }
     &-content {
       // top: 0 !important;
