@@ -1,13 +1,13 @@
 {
   "name": "react-user-list-docs",
   "version": "0.0.0",
-  "homepage": "https://Zenk3.github.io/react-user-list",
+  "homepage": "https://desw0lf.github.io/react-user-list",
   "author": "Artur",
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/Zenk3/react-user-list"
+    "url": "https://github.com/desw0lf/react-user-list"
   },
   "scripts": {
     "start": "docusaurus start",
