@@ -3,41 +3,41 @@ export const USERS = [
     firstName: "John",
     lastName: "Smith",
     username: "asddas@dasasd.com",
-    image: "https://x"
+    image: "https://i.pravatar.cc/100?u=JohnSmith2345"
   },
   {
-    firstName: "Bob",
-    lastName: "Doe",
+    firstName: "Robert",
+    lastName: "Phillips",
     username: "asdazxc@asdasd.com",
-    image: null
+    image: "https://i.pravatar.cc/100?u=BobDoe912122359232699833"
   },
   {
-    firstName: "Janna",
-    lastName: "Doe",
-    username: "asdazxfdfsdc@asddasd.com",
-    image: "https://i.imgur.com/1sZ4giz.png"
-  },
-  {
-    firstName: "Bob",
-    lastName: "Doe",
+    firstName: "Napoleon",
+    lastName: "Simpson",
     username: "asdazxsdffdc@asddasd.com",
     image: null
   },
   {
-    firstName: "Kayly",
-    lastName: "Brooke",
-    username: "asdxazxsdffddc@asdasd.com",
-    image: null
+    firstName: "Amanda",
+    lastName: "Norton",
+    username: "asdazxfdfsdc@asddasd.com",
+    image: "https://i.pravatar.cc/100?u=JannaDoe4"
   },
   {
-    firstName: "Kayly",
-    lastName: "Brooke",
+    firstName: "Barbara",
+    lastName: "Atkins",
+    username: "asdxazxsdffddc@asdasd.com",
+    image: "https://i.pravatar.cc/100?u=kb2"
+  },
+  {
+    firstName: "Lorine",
+    lastName: "Wickman",
     username: "asdxazxsBrookedffddc@asdasd.com",
     image: null
   },
   {
-    firstName: "Kelvin",
-    lastName: "Ridge",
+    firstName: "Daniel",
+    lastName: "Morris",
     username: "asdxazxsdfRidgefddc@asdasd.com",
     image: null
   }

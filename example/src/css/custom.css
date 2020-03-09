@@ -124,6 +124,23 @@ html[data-theme="dark"] .doco-input:active, html[data-theme="dark"] .doco-input:
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+@media (max-width: 996px) {
+  .row {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .row .col + .col {
+    margin-top:64px;
+    border-top-width:1px;
+    border-top-style:solid;
+    padding-top:64px;
+    border-top-color: rgba(0,0,0,0.2);
+  }
+  html[data-theme="dark"] .row .col + .col {
+    border-top-color: rgba(255,255,255,0.2);
+  }
+}
+
 
 
 
