@@ -4,23 +4,25 @@ import UserAvatar from "./user-avatar";
 
 // ? TYPES:
 import { User } from "../types/user.type";
-import { BorderRadius } from "../types/border-radius.type";
+// import { BorderRadius } from "../types/border-radius.type";
+// import { ColourizeProperties } from "../types/colourize-properties.type";
+import { Defaults } from "../defaults";
 
-export type Props = {
+export interface Props extends Partial<Defaults> {
   users: User[];
-  size: number;
-  borderRadius?: BorderRadius;
+  // size: number;
+  // borderRadius?: BorderRadius;
   children?: any; //React.ReactNode;
   usersLength?: number;
-  maxItems: number;
-  theme: "default" | string;
-  borderWidth?: number;
-  borderColor?: string;
+  // maxItems: number;
+  // theme: "default" | string;
+  // borderWidth?: number;
+  // borderColor?: string;
   minWidth?: string;
   maxWidth?: string;
   isExpanded?: boolean;
   [otherProps: string]: any;
-};
+}
 
 const UserList: React.ReactNode = ({
   users,
