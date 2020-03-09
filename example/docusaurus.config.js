@@ -1,12 +1,13 @@
 const package = require("./package.json");
 
 const title = "React User List";
+const baseUrl = "/"; // "/react-user-list/";
 
 module.exports = {
   title: title,
   tagline: "Expandable user avatar list library component for React",
   url: package.homepage,
-  baseUrl: "/react-user-list/",
+  baseUrl: baseUrl,
   favicon: "img/favicon.ico",
   organizationName: package.author, // Usually your GitHub org/user name.
   projectName: package.name, // Usually your repo name.
