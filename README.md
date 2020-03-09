@@ -13,7 +13,7 @@ npm install --save react-user-list
 ## Usage
 
 ```tsx
-import React, { Component } from "react";
+import React from "react";
 
 import UserList from "react-user-list";
 
