@@ -55,7 +55,7 @@ html[data-theme="dark"] {
 .tryme > div > div + div {
   margin-top: 8px;
 }
-
+/* Special 2 */
 .tryme .special2 {
   display:table;
   width:100%;
@@ -72,6 +72,13 @@ html[data-theme="dark"] {
   display:table-cell;
   vertical-align:middle;
 }
+.disabled-row {
+  opacity: 0.3;
+}
+.disabled-row span:nth-child(1) {
+  text-decoration: line-through;
+}
+/* Special 2:End */
 
 .tryme input {
   max-width: 256px;
@@ -106,6 +113,15 @@ html[data-theme="dark"] {
 .doco-input:focus {
   outline: none;
   background-color: rgba(0,0,0, 0.1);
+}
+
+.doco-input.with-border {
+  border-width:1px;
+  border-style: solid;
+  border-color: rgba(0,0,0, 0.2);
+}
+html[data-theme="dark"] .doco-input.with-border {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 html[data-theme="dark"] .doco-input {
@@ -173,6 +189,7 @@ body {
   background-color: hsla(0, 0%, 0%, 0.3);
 }
 
+
 /* Colour picker */
 .color-picker-cover {
   position: fixed;
@@ -185,4 +202,59 @@ body {
 .color-picker-cover-popover {
   position: absolute;
   z-index: 2;
+}
+
+/* Checkboxes */
+.property + .property {
+  margin-top:8px;
+}
+/* https://codepen.io/Vestride/pen/dABHx */
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.styled-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+.styled-checkbox + label:before {
+  content: '';
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+  background: white;
+  transition: background 0.2s ease-in-out;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+.styled-checkbox:hover + label:before {
+  background: rgba(110, 63, 121, 0.3);
+}
+/* .styled-checkbox:focus + label:before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+} */
+.styled-checkbox:checked + label:before {
+  background: #6e3f79;
+}
+.styled-checkbox:disabled + label {
+  color: #b8b8b8;
+  cursor: auto;
+}
+.styled-checkbox:disabled + label:before {
+  box-shadow: none;
+  background: #ddd;
+}
+.styled-checkbox:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  background: white;
+  width: 2px;
+  height: 2px;
+  box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }

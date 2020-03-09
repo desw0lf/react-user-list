@@ -23,6 +23,36 @@ const intToARGB = (i: number): string => {
   return hex.substring(0, 6);
 };
 
-export const stringToColour = (value: string): any => {
+interface RGB {
+  r: number;
+  g: number;
+  b: number;
+}
+
+const hexToRGB = (hexValue: string): RGB => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexValue);
+  if (!result) {
+    return {
+      r: 0,
+      g: 0,
+      b: 0
+    };
+  }
+  return {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  };
+};
+
+export const stringToHex = (value: string): string => {
   return "#" + intToARGB(hashCode(value));
+};
+
+export const stringToRGB = (hexValue: string): RGB => {
+  return hexToRGB("#" + intToARGB(hashCode(hexValue)));
+};
+
+export const RGBToStringifiedRGBa = (rgb: RGB, opacity = 1): string => {
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
 };

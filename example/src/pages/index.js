@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
@@ -16,6 +16,8 @@ const SAMPLE_USER = {
   username: "john.smith@sample.com",
   image: null
 };
+
+const DEFAULT_SWATCHES = ['#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#EB144C', '#F78DA7', '#9900EF', '#FFFFFF', '#000000',];
 
 const features = [
   {
@@ -66,6 +68,17 @@ function Feature({ imageUrl, title, description, special1, special2 }) {
   );
 }
 
+function Picker({ color, isDisabled, handleChange, name}) {
+  const [visible, setVisible] = useState(false);
+  return <>
+    <input style={{background: color, cursor: "pointer"}} readOnly={true} onClick={() => !isDisabled && setVisible(true)} maxLength="25" className="doco-input with-border" type="text" name={name} onChange={handleChange}/>
+    {visible && !isDisabled && <div className="color-picker-cover-popover">
+      <div className="color-picker-cover" onClick={() => setVisible(false)}/>
+      <TwitterPicker triangle="hide" colors={DEFAULT_SWATCHES} color={color} onChangeComplete={(color) => handleChange({target: {name: name, value: color.hex, type: "text"}})}/>
+    </div>}
+  </>
+}
+
 function Special1({isSpecial}) {
   if (!isSpecial) {
     return null;
@@ -107,10 +120,24 @@ function Special2({isSpecial}) {
   const [settings, setSettings] = useState({
     size: 37,
     borderWidth: 3,
-    borderColor: "#922920",
-    borderRadius: 4
+    borderColor: "#9900EF",
+    borderRadius: 4,
+    backgroundOpacity: 0.3,
+    colourizeProperties: ["backgroundColor"],
+    backgroundColor: "#ffffff",
+    color: "black"
   });
-  const [isBorderPickerVisible, setIsBorderPickerVisible] = useState(false);
+  const [colourizeProperties, setColourizeProperties] = useState({
+    color: true,
+    "borderColor": true,
+    "backgroundColor": true
+  });
+  useEffect(() => {
+    setSettings((prevState) => ({
+      ...prevState,
+      colourizeProperties: Object.entries(colourizeProperties).filter(([key, value]) => value === true).map(([key, value]) => key)
+    }))
+  }, [colourizeProperties]);
   const handleChange = (event) => {
     const { name, type, value } = event.target;
     if (value === "") {
@@ -124,6 +151,15 @@ function Special2({isSpecial}) {
       ...prevState,
       [name]: parsedValue
     }))
+  }
+  const handlePropertiesChange = (event) => {
+    const { name } = event.target;
+    setColourizeProperties((prevState) => {
+      return {
+        ...prevState,
+        [name]: !prevState[name]
+      }
+    })
   }
   return <div>
     {/* <p>Try it out!</p> */}
@@ -139,19 +175,34 @@ function Special2({isSpecial}) {
       </div>
       <div>
         <div className="special2">
-          <div><span>Size</span><span><input className="doco-input" type="number" min="0" max="500" placeholder="Size" name="size" value={settings.size} onChange={handleChange}/></span></div>
           <div>
-            <span>Border color</span>
+            <span>Auto Colourize CSS</span>
+            <span>{Object.entries(colourizeProperties).map(([key, value]) => <div key={key} className="property"><input id={`property_${key}`} className="styled-checkbox" type="checkbox" name={key} onChange={handlePropertiesChange} checked={value}/><label for={`property_${key}`}>{key}</label></div>)}</span>
+          </div>
+          <div><span>Size</span><span><input className="doco-input" type="number" min="0" max="500" placeholder="Size" name="size" value={settings.size} onChange={handleChange}/></span></div>
+          <div className={colourizeProperties.borderColor ? "disabled-row" : ""}>
+            <span>Border colour</span>
             <span>
-              <input style={{background: settings.borderColor, cursor: "pointer"}} readOnly={true} onClick={() => setIsBorderPickerVisible(true)} maxLength="25" className="doco-input" type="text" name="borderColor" onChange={handleChange}/>
-              {isBorderPickerVisible && <div className="color-picker-cover-popover">
-                <div className="color-picker-cover" onClick={() => setIsBorderPickerVisible(false)}/>
-                <TwitterPicker color={settings.borderColor} onChangeComplete={(color) => handleChange({target: {name: "borderColor", value: color.hex, type: "text"}})}/>
-              </div>}
+              <Picker isDisabled={colourizeProperties.borderColor} name="borderColor" color={settings.borderColor} handleChange={handleChange}/>
             </span>
           </div>
           <div><span>Border width</span><span><input className="doco-input" type="number" min="0" max="500" placeholder="Border width" name="borderWidth" value={settings.borderWidth} onChange={handleChange}/></span></div>
           <div><span>Border radius</span><span><input className="doco-input" type="number" min="0" max="500"  placeholder="Border radius" name="borderRadius" value={settings.borderRadius} onChange={handleChange}/></span></div>
+          <div className={colourizeProperties.backgroundColor ? "disabled-row" : ""}>
+            <span>Background colour</span>
+            <span>
+              <Picker isDisabled={colourizeProperties.backgroundColor} name="backgroundColor" color={settings.backgroundColor} handleChange={handleChange}/>
+            </span>
+          </div>
+          <div className={!colourizeProperties.backgroundColor ? "disabled-row" : ""}>
+            <span>Background opacity</span><span><input className="doco-input" type="number" min="0.1" max="1" step="0.1"  placeholder="Background opacity" name="backgroundOpacity" value={settings.backgroundOpacity} onChange={handleChange}/></span>
+          </div>
+          <div className={colourizeProperties.color ? "disabled-row" : ""}>
+            <span>Text colour</span>
+            <span>
+              <Picker isDisabled={colourizeProperties.color} name="color" color={settings.color} handleChange={handleChange}/>
+            </span>
+          </div>
         </div>
       </div>
     </div>
