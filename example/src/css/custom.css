@@ -72,10 +72,19 @@ html[data-theme="dark"] {
   display:table-cell;
   vertical-align:middle;
 }
-.disabled-row {
+/* .disabled-row {
   opacity: 0.3;
 }
 .disabled-row span:nth-child(1) {
+  text-decoration: line-through;
+} */
+.disabled-row .doco-input {
+  opacity: 0;
+}
+.disabled-row-special {
+  opacity: 0.3;
+}
+.disabled-row-special span:nth-child(1) {
   text-decoration: line-through;
 }
 /* Special 2:End */
@@ -205,8 +214,15 @@ body {
 }
 
 /* Checkboxes */
+.property {
+  display:inline-block;
+  margin-top: 2px;
+}
 .property + .property {
   margin-top:8px;
+}
+.styled-checkbox + label {
+  vertical-align:middle;
 }
 /* https://codepen.io/Vestride/pen/dABHx */
 .styled-checkbox {

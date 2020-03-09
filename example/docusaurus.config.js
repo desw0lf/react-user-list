@@ -20,7 +20,7 @@ module.exports = {
       },
       links: [
         { to: "docs/installation", label: "Docs", position: "left" },
-        { to: "examples", label: "Examples", position: "left"},
+        // { to: "examples", label: "Examples", position: "left"},
         // { to: "blog", label: "Blog", position: "left" },
         {
           href: package.repository.url,
