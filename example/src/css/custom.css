@@ -56,6 +56,23 @@ html[data-theme="dark"] {
   margin-top: 8px;
 }
 
+.tryme .special2 {
+  display:table;
+  width:100%;
+}
+
+.tryme .special2 > div {
+  display:table-row;
+}
+.tryme .special2 > div + div > span {
+  padding-top: 8px;
+}
+
+.tryme .special2 > div > span {
+  display:table-cell;
+  vertical-align:middle;
+}
+
 .tryme input {
   max-width: 256px;
 }
@@ -68,25 +85,73 @@ html[data-theme="dark"] {
   width: 100%;
   box-shadow: none;
   border: none;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(0,0,0, 0.05);
   padding-left: 8px;
   padding-right: 8px;
   font-size: 16px;
   transition: background-color 0.2s ease-in-out;
-  color: white;
+  color: black;
 }
 
 .doco-input::placeholder {
-  color: white;
+  color: black;
   opacity: 0.4;
 }
 
 .doco-input:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(0,0,0, 0.08);
 }
 
 .doco-input:active,
 .doco-input:focus {
   outline: none;
+  background-color: rgba(0,0,0, 0.1);
+}
+
+html[data-theme="dark"] .doco-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+html[data-theme="dark"] .doco-input::placeholder {
+  color: white;
+}
+html[data-theme="dark"] .doco-input:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .doco-input:active, html[data-theme="dark"] .doco-input:focus {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+.footer {
+  padding-top:1rem;
+  padding-bottom:1rem;
+}
+
+
+.navbar .navbar__logo {
+  min-width:32px;
+}
+body {
+  overflow-y: scroll !important;
+  overflow-x: auto !important;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 12px;
+  background-color: transparent;
+  opacity: 0.6;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsla(0, 0%, 0%, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: hsla(0, 0%, 0%, 0.3);
 }

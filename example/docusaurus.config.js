@@ -19,7 +19,7 @@ module.exports = {
         src: "img/logo.svg"
       },
       links: [
-        { to: "docs/doc1", label: "Docs", position: "left" },
+        { to: "docs/installation", label: "Docs", position: "left" },
         { to: "examples", label: "Examples", position: "left"},
         // { to: "blog", label: "Blog", position: "left" },
         {

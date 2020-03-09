@@ -40,7 +40,7 @@ const UserAvatar: React.ElementType = ({
   return (
     <WrapperTag className="react-user-list__user">
       <div className="react-user-list__avatar" style={{ ...baseStyles, ...colour }}>
-        {!image ? initials : <img onError={onImageError} src={image} alt={initials} />}
+        {!image ? <span>{initials}</span> : <img onError={onImageError} src={image} alt={initials} />}
       </div>
     </WrapperTag>
   );
