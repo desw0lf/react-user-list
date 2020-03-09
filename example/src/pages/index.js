@@ -7,6 +7,8 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import UserList, { UserAvatar } from "react-user-list";
 import { USERS } from "../SAMPLE_DATA/users";
+import { TwitterPicker } from "react-color";
+
 
 const SAMPLE_USER = {
   firstName: "John",
@@ -108,6 +110,7 @@ function Special2({isSpecial}) {
     borderColor: "#922920",
     borderRadius: 4
   });
+  const [isBorderPickerVisible, setIsBorderPickerVisible] = useState(false);
   const handleChange = (event) => {
     const { name, type, value } = event.target;
     if (value === "") {
@@ -137,7 +140,16 @@ function Special2({isSpecial}) {
       <div>
         <div className="special2">
           <div><span>Size</span><span><input className="doco-input" type="number" min="0" max="500" placeholder="Size" name="size" value={settings.size} onChange={handleChange}/></span></div>
-          <div><span>Border color</span><span><input maxLength="25" className="doco-input" type="text" placeholder="Border color" name="borderColor" value={settings.borderColor} onChange={handleChange}/></span></div>
+          <div>
+            <span>Border color</span>
+            <span>
+              <input onClick={() => setIsBorderPickerVisible(true)} maxLength="25" className="doco-input" type="text" placeholder="Border color" name="borderColor" value={settings.borderColor} onChange={handleChange}/>
+              {isBorderPickerVisible && <div className="color-picker-cover-popover">
+                <div className="color-picker-cover" onClick={() => setIsBorderPickerVisible(false)}/>
+                <TwitterPicker color={settings.borderColor} onChangeComplete={(color) => handleChange({target: {name: "borderColor", value: color.hex, type: "text"}})}/>
+              </div>}
+            </span>
+          </div>
           <div><span>Border width</span><span><input className="doco-input" type="number" min="0" max="500" placeholder="Border width" name="borderWidth" value={settings.borderWidth} onChange={handleChange}/></span></div>
           <div><span>Border radius</span><span><input className="doco-input" type="number" min="0" max="500"  placeholder="Border radius" name="borderRadius" value={settings.borderRadius} onChange={handleChange}/></span></div>
         </div>

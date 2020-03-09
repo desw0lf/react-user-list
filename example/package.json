@@ -20,6 +20,7 @@
     "@docusaurus/preset-classic": "^2.0.0-alpha.43",
     "classnames": "^2.2.6",
     "react": "file:../node_modules/react",
+    "react-color": "^2.18.0",
     "react-dom": "file:../node_modules/react-dom",
     "react-user-list": "file:.."
   },
