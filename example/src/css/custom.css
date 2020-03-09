@@ -155,3 +155,17 @@ body {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: hsla(0, 0%, 0%, 0.3);
 }
+
+/* Colour picker */
+.color-picker-cover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.color-picker-cover-popover {
+  position: absolute;
+  z-index: 2;
+}
