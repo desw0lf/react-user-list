@@ -71,13 +71,18 @@ function Feature({ imageUrl, title, description, special1, special2 }) {
 function Picker({ color, isDisabled, handleChange, name}) {
   const [visible, setVisible] = useState(false);
   return <>
-    <input style={{background: color, cursor: "pointer"}} readOnly={true} onClick={() => !isDisabled && setVisible(true)} maxLength="25" className="doco-input with-border" type="text" name={name} onChange={handleChange}/>
+    <input style={{width: "60%", background: isDisabled ? "transparent" : color, cursor: isDisabled ? "default" : "pointer"}} readOnly={true} onClick={() => !isDisabled && setVisible(true)} maxLength="25" className="doco-input with-border" type="text" name={name} onChange={handleChange}/>
     {visible && !isDisabled && <div className="color-picker-cover-popover">
       <div className="color-picker-cover" onClick={() => setVisible(false)}/>
       <TwitterPicker triangle="hide" colors={DEFAULT_SWATCHES} color={color} onChangeComplete={(color) => handleChange({target: {name: name, value: color.hex, type: "text"}})}/>
     </div>}
   </>
 }
+
+function Property({name, value, handlePropertiesChange}) {
+  return <div className="property" style={{width: "40%"}}><input id={`property_${name}`} className="styled-checkbox" type="checkbox" name={name} onChange={handlePropertiesChange} checked={value}/><label htmlFor={`property_${name}`}>Auto</label></div>;
+}
+
 
 function Special1({isSpecial}) {
   if (!isSpecial) {
@@ -175,14 +180,15 @@ function Special2({isSpecial}) {
       </div>
       <div>
         <div className="special2">
-          <div>
-            <span>Auto Colourize CSS</span>
-            <span>{Object.entries(colourizeProperties).map(([key, value]) => <div key={key} className="property"><input id={`property_${key}`} className="styled-checkbox" type="checkbox" name={key} onChange={handlePropertiesChange} checked={value}/><label for={`property_${key}`}>{key}</label></div>)}</span>
-          </div>
+          {/* <div>
+            <span>Auto Colour CSS</span>
+            <span>{Object.entries(colourizeProperties).map(([key, value]) => <div key={key}><Property name={key} value={value} handlePropertiesChange={handlePropertiesChange}/></div>)}</span>
+          </div> */}
           <div><span>Size</span><span><input className="doco-input" type="number" min="0" max="500" placeholder="Size" name="size" value={settings.size} onChange={handleChange}/></span></div>
           <div className={colourizeProperties.borderColor ? "disabled-row" : ""}>
             <span>Border colour</span>
             <span>
+              <Property name="borderColor" value={colourizeProperties.borderColor} handlePropertiesChange={handlePropertiesChange}/>
               <Picker isDisabled={colourizeProperties.borderColor} name="borderColor" color={settings.borderColor} handleChange={handleChange}/>
             </span>
           </div>
@@ -191,15 +197,17 @@ function Special2({isSpecial}) {
           <div className={colourizeProperties.backgroundColor ? "disabled-row" : ""}>
             <span>Background colour</span>
             <span>
+              <Property name="backgroundColor" value={colourizeProperties.backgroundColor} handlePropertiesChange={handlePropertiesChange}/>
               <Picker isDisabled={colourizeProperties.backgroundColor} name="backgroundColor" color={settings.backgroundColor} handleChange={handleChange}/>
             </span>
           </div>
-          <div className={!colourizeProperties.backgroundColor ? "disabled-row" : ""}>
+          <div className={!colourizeProperties.backgroundColor ? "disabled-row-special" : ""}>
             <span>Background opacity</span><span><input className="doco-input" type="number" min="0.1" max="1" step="0.1"  placeholder="Background opacity" name="backgroundOpacity" value={settings.backgroundOpacity} onChange={handleChange}/></span>
           </div>
           <div className={colourizeProperties.color ? "disabled-row" : ""}>
             <span>Text colour</span>
             <span>
+              <Property name="color" value={colourizeProperties.color} handlePropertiesChange={handlePropertiesChange}/>
               <Picker isDisabled={colourizeProperties.color} name="color" color={settings.color} handleChange={handleChange}/>
             </span>
           </div>
