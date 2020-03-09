@@ -143,7 +143,7 @@ function Special2({isSpecial}) {
           <div>
             <span>Border color</span>
             <span>
-              <input onClick={() => setIsBorderPickerVisible(true)} maxLength="25" className="doco-input" type="text" placeholder="Border color" name="borderColor" value={settings.borderColor} onChange={handleChange}/>
+              <input style={{background: settings.borderColor, cursor: "pointer"}} readOnly={true} onClick={() => setIsBorderPickerVisible(true)} maxLength="25" className="doco-input" type="text" name="borderColor" onChange={handleChange}/>
               {isBorderPickerVisible && <div className="color-picker-cover-popover">
                 <div className="color-picker-cover" onClick={() => setIsBorderPickerVisible(false)}/>
                 <TwitterPicker color={settings.borderColor} onChangeComplete={(color) => handleChange({target: {name: "borderColor", value: color.hex, type: "text"}})}/>
