@@ -1,7 +1,7 @@
 module.exports = {
   someSidebar: {
-    'Get Started': ['installation'],
-    'API Reference': ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
+    'Get Started': ['installation', 'usage'],
+    'API Reference': ['userlist', 'useravatar'],
+    'Theme': ['overriding-the-theme']
   },
 };
