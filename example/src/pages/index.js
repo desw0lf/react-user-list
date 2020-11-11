@@ -5,7 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
-import UserList, { UserAvatar } from "react-user-list";
+import UserList, { UserAvatar, stringToHex, stringToRGB } from "react-user-list";
 import { USERS } from "../SAMPLE_DATA/users";
 import { TwitterPicker } from "react-color";
 
@@ -223,6 +223,7 @@ function Special2({isSpecial}) {
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
+  console.log(stringToRGB("sample_text"));
   const [selectedUser, setSelectedUser] = useState(null);
   return (
     <Layout title="Home" description={siteConfig.tagline}>
