@@ -5,7 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
-import UserList, { UserAvatar, stringToHex, stringToRGB } from "react-user-list";
+import UserList, { UserAvatar } from "react-user-list";
 import { USERS } from "../SAMPLE_DATA/users";
 import { TwitterPicker } from "react-color";
 
@@ -47,11 +47,12 @@ const features = [
       <>
         Built in dropdown element for concatenated user avatar list, with the ability to include customizable dropdown elements.
       </>
-    )
+    ),
+    special3: true
   }
 ];
 
-function Feature({ imageUrl, title, description, special1, special2 }) {
+function Feature({ imageUrl, title, description, special1, special2, special3 }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={classnames("col col--4", styles.feature)} style={{position:"relative"}}>
@@ -64,6 +65,7 @@ function Feature({ imageUrl, title, description, special1, special2 }) {
       <p>{description}</p>
       <Special1 isSpecial={special1}/>
       <Special2 isSpecial={special2}/>
+      <Special3 isSpecial={special3}/>
     </div>
   );
 }
@@ -217,13 +219,23 @@ function Special2({isSpecial}) {
   </div>
 }
 
+function Special3({isSpecial}) {
+  if (!isSpecial) {
+    return null;
+  }
+  return (
+    <Link to={useBaseUrl("docs/creating-the-dropdown")}>
+      Find out how to add dropdown menu
+    </Link>
+  );
+}
+
 
 
 
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
-  console.log(stringToRGB("sample_text"));
   const [selectedUser, setSelectedUser] = useState(null);
   return (
     <Layout title="Home" description={siteConfig.tagline}>
