@@ -7,7 +7,7 @@ sidebar_label: UserList
 ## Required Props
 | Props | Type | Description |
 | --- | --- | --- |
-| `users` | `User[]` | The list of users for the component |
+| `users` | `User[]` [(type)](type-user.md) | The list of users for the component |
 
 ## Optional Props
 | Props | Type | Default | Description |
@@ -24,14 +24,3 @@ sidebar_label: UserList
 | `maxHeight` | `string` | `200px` | Max height of the dropdown menu before applying a scroller
 | `isExpanded` | `boolean` | `false` | Whether the dropdown menu should be expanded as default |
 | `children` | `React.ReactNode` | | Custom child wrapper for the dropdown items, props available are `index: number, user: User` |
-
-## Models
-```jsx
-interface User {
-  firstName: string;
-  lastName: string;
-  image: string | null;
-  username: string;
-  [otherProps: string]: any;
-};
-```
