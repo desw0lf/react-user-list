@@ -1,6 +1,6 @@
 {
   "name": "react-user-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://desw0lf.github.io/react-user-list",
   "description": "",
   "author": "",
@@ -9,6 +9,7 @@
     "type": "git",
     "url": "https://github.com/desw0lf/react-user-list.git"
   },
+  "keywords": ["stacked", "avatar", "grouped", "users", "avatars", "group", "react", "initials"],
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "css": "dist/react-user-list.css",
