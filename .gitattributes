@@ -13,4 +13,4 @@
 *.png binary
 *.gif binary
 
-example/* linguist-vendored
+example/* linguist-documentation
