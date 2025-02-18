@@ -12,3 +12,5 @@
 *.jpeg binary
 *.png binary
 *.gif binary
+
+example/* linguist-vendored
